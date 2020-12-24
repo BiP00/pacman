@@ -125,19 +125,23 @@
       pacman.x--;
       console.log(pacman.x);
       boton = 37;
+      document.getElementById("pacman").style.transform = "rotate(180deg)";
     }
     else if (e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2) {
       pacman.y--;
       console.log(pacman.y);
       boton = 38;
+      document.getElementById("pacman").style.transform = "rotate(-90deg)";
     }
     else if (e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2) {
       pacman.x++;
       console.log(pacman.x);
+      document.getElementById("pacman").style.transform = "rotate(0deg)";
     }
     else if (e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2) {
       pacman.y++;
       console.log(pacman.y);
+      document.getElementById("pacman").style.transform = "rotate(90deg)";
     }
     if (world[pacman.y][pacman.x] == 1) {
       world[pacman.y][pacman.x] = 0;
