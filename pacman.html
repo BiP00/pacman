@@ -44,6 +44,12 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
+    .cereza {
+      background-image: url("cereza.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
     #pacman {
       background-image: url("pacman.gif");
@@ -73,7 +79,7 @@
     [2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
     [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
     [2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2],
-    [2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2],
+    [2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 2],
     [2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2],
     [2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2],
     [2, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 2],
@@ -98,6 +104,9 @@
         }
         else if (world[i][j] == "0") {
           output += '<div class="vacio"></div>';
+        }
+        else if (world[i][j] == "4") {
+          output += '<div class="cereza"></div>';
         }
       }
       output += "</div>";
@@ -126,6 +135,7 @@
       console.log(pacman.x);
       boton = 37;
       document.getElementById("pacman").style.transform = "rotate(180deg)";
+      
     }
     else if (e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2) {
       pacman.y--;
@@ -146,6 +156,12 @@
     if (world[pacman.y][pacman.x] == 1) {
       world[pacman.y][pacman.x] = 0;
       puntaje += 10;
+      document.getElementById("score").innerHTML = puntaje;
+      displayWorld();
+    }
+    if (world[pacman.y][pacman.x] == 4) {
+      world[pacman.y][pacman.x] = 0;
+      puntaje += 50;
       document.getElementById("score").innerHTML = puntaje;
       displayWorld();
     }
